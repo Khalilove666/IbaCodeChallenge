@@ -6,33 +6,59 @@ import { CustomSvg, CustomBtn } from '../components';
 
 export const SingleDetails = ({ navigation, route }) => {
 
-    const { name, currency, price, date } = route.params.item;
+    const { name, currency, price, date, type, payWith } = route.params.item;
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
-                    <CustomSvg name={'chevronLeft'} style={styles.arrowBack} />
+                    <CustomSvg name={'arrowLeft'} style={styles.arrowBack} />
                 </TouchableOpacity>
                 <Text style={styles.headerText}>{name}</Text>
             </View>
             <Text style={styles.price}>{currency} {price}</Text>
             <View style={styles.btnsHolder}>
-                <CustomBtn />
-                <CustomBtn />
+                <CustomBtn title={"Card"} icon={'creditCard'}/>
+                <CustomBtn title={"Debt"} icon={'dollar'}/>
             </View>
             <Text style={styles.subHeader}>Transaction Detail</Text>
             <View style={styles.horizontalLine} />
-            <View style={styles.paymentDetail}>
-                <View style={styles.paymentInfo}>
+            <View style={styles.transactionDetail}>
+                <View style={styles.detailItem}>
                     <Text style={styles.detailText}>Payment Detail</Text>
                     <View style={styles.detailValuesHolder}>
                         <Text style={styles.detailValue}>{date}</Text>
                         <TouchableOpacity style={styles.infoBtn}>
-                            <CustomSvg name={'infoCircle'} style={{color: "#C8C8C8"}}/>
+                            <CustomSvg name={'infoCircle'} style={{color: "#0073e6"}}/>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.tinyLine} />
+                <View style={styles.detailItem}>
+                    <Text style={styles.detailText}>Type</Text>
+                    <View style={styles.detailValuesHolder}>
+                        <Text style={styles.detailValue}>{type}</Text>
+                        <TouchableOpacity style={styles.infoBtn}>
+                            <CustomSvg name={'infoCircle'} style={{color: "#0073e6"}}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={styles.tinyLine} />
+                <View style={styles.detailItem}>
+                    <Text style={styles.detailText}>Pay with</Text>
+                    <View style={styles.detailValuesHolder}>
+                        <Text style={styles.detailValue}>{payWith}</Text>
+                        <TouchableOpacity style={styles.infoBtn}>
+                            <CustomSvg name={'infoCircle'} style={{color: "#0073e6"}}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={styles.tinyLine} />
+            </View>
+            <View style={styles.exportHolder}>
+                <TouchableOpacity style={styles.exportItem}>
+                    <CustomSvg name={"download"} style={{width: 20, height: 20, color: "black"}}/>
+                    <Text style={styles.exportText}>Export</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -83,25 +109,52 @@ const styles = StyleSheet.create({
         backgroundColor: "grey",
         marginTop: 10,
     },
-    paymentDetail: {
+    transactionDetail: {
         width: "90%",
+        paddingTop: 30,
     },
-    paymentInfo: {
+    detailItem: {
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
+        marginTop: 18,
+    },
+    detailText: {
+        fontSize: 15,
+        fontWeight: "800",
+        marginLeft: 10,
     },
     detailValuesHolder: {
         flexDirection: "row",
         justifyContent: "space-between",
     },
+    detailValue: {
+        fontSize: 13,
+        marginRight: 15,
+    },
     infoBtn: {
         width: 20,
         height: 20,
+        marginRight: 10,
     },
     tinyLine: {
         width: "100%",
         height: 1,
         backgroundColor: "#C8C8C8",
+        marginTop: 8,
+    },
+    exportHolder: {
+        marginTop: 30,
+        width: "90%",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+    },
+    exportItem: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    exportText: {
+        fontSize: 15,
+        marginLeft: 15,
     }
 });

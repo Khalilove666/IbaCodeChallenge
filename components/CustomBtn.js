@@ -1,10 +1,12 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import { CustomSvg } from './CustomSvg';
 
 
-export const CustomBtn = ({title='title', style}) => {
+export const CustomBtn = ({title='title', icon='creditCard', style}) => {
     return (
         <TouchableOpacity style={{...style, ...styles.container}}>
+            <CustomSvg name={icon} style={{color: "black", width: 20, height: 20}}/>
             <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
     )
