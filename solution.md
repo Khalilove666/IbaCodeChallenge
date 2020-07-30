@@ -24,9 +24,9 @@
 ## Notes
 
 * Cache Images works only in IOS (but not always properly)
-* This readme file is writen after updating project
+* This MarkDown file is writen after updating project
 
 
 ## Problems 
 
-* Cache image libraries are depraced. 
+* Cache image libraries are deprecated. 
